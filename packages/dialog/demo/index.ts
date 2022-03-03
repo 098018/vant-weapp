@@ -88,18 +88,17 @@ VantComponent({
       this.setData({ show: true });
     },
     beforeCloseFn() {
-      const beforeClose = (action?: Action) => new Promise((resolve) => {
-        setTimeout(() => {
-          if (action === 'confirm') {
-            resolve(true);
-          }
-          else {
-            // 拦截取消操作
-            resolve(false);
-          }
-        }, 1000);
-      });
-      return (action) => beforeClose(action);
+      return  (action:Action) => new Promise((resolve) => {
+                setTimeout(() => {
+                    if (action === 'confirm') {
+                        resolve(true);
+                    }
+                    else {
+                        // 拦截取消操ss作
+                        resolve(false);
+                    }
+                }, 1000);
+            });
 
     },
   },
